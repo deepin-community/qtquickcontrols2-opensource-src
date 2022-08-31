@@ -1,0 +1,2 @@
+{"Filepath":"include/QtQuickControls2/qtquickcontrols2version.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICKCONTROLS2_VERSION","QTQUICKCONTROLS2_VERSION_STR","QT_QTQUICKCONTROLS2_VERSION_H"]}]}
+{"Filepath":"include/QtQuickTemplates2/qtquicktemplates2version.h","Functions":null,"Records":[{"Name":"macro","Fields":["QTQUICKTEMPLATES2_VERSION","QTQUICKTEMPLATES2_VERSION_STR","QT_QTQUICKTEMPLATES2_VERSION_H"]}]}

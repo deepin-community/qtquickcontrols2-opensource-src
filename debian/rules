@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+export QT_SELECT = qt5
+
+%:
+	dh $@ --with pkgkde_symbolshelper,qmlcdeps
+
+override_dh_auto_configure:
+	dh_auto_configure -- QT_BUILD_PARTS+=tests
+
+override_dh_auto_build-indep:
+	dh_auto_build -- docs
+
+override_dh_auto_install-arch:
+	dh_auto_install
+
+	# Reproducible builds: remove build paths from prl files.
+	sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libQt5QuickControls2.prl
+	sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libQt5QuickTemplates2.prl
+
+override_dh_auto_install-indep:
+	dh_auto_build -- INSTALL_ROOT=$(CURDIR)/debian/tmp install_docs
+
+override_dh_auto_test-arch:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	$(MAKE) install -Csrc/imports INSTALL_ROOT=$(CURDIR)/test_root
+	# The tests are not fatal because of https://bugreports.qt.io/browse/QTBUG-57100
+	-xvfb-run -a -s "-screen 0 1024x768x24 +extension RANDR +extension RENDER +extension GLX" \
+		dh_auto_test --no-parallel -- -Ctests/auto -k \
+		LD_LIBRARY_PATH=$(CURDIR)/lib \
+		QML2_IMPORT_PATH=$(CURDIR)/test_root/usr/lib/$(DEB_HOST_MULTIARCH)/qt5/qml
+endif
+
+override_dh_auto_test-indep:

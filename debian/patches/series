@@ -1,0 +1,2 @@
+disable_fontless_examples_build.patch
+QTBUG-101480-Fix-controls-not-inheriting-palette-from-parent.patch

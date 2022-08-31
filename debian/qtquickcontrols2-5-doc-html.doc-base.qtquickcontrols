@@ -1,0 +1,9 @@
+Document: qt5-quickcontrols
+Title: Qt 5 Quick Controls module
+Author: The Qt Company Ltd
+Abstract: This is the HTML documentation for Qt 5 Quick Controls and Quick Templates 2
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/qtquickcontrols2-5-doc-html/html/qtquickcontrols/qtquickcontrols-index.html
+Files: /usr/share/doc/qtquickcontrols2-5-doc-html/html/qtquickcontrols/*.html

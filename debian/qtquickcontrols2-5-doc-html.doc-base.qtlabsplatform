@@ -1,0 +1,9 @@
+Document: qt5-labsplatform
+Title: Qt 5 Labs Platform module
+Author: The Qt Company Ltd
+Abstract: This is the HTML documentation for Qt 5 Labs Platform
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/qtquickcontrols2-5-doc-html/html/qtlabsplatform/qtlabsplatform-index.html
+Files: /usr/share/doc/qtquickcontrols2-5-doc-html/html/qtlabsplatform/*.html

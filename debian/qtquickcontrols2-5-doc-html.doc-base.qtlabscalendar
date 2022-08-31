@@ -1,0 +1,9 @@
+Document: qt5-labscalendar
+Title: Qt 5 Labs Calendar module
+Author: The Qt Company Ltd
+Abstract: This is the HTML documentation for Qt 5 Labs Calendar
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/qtquickcontrols2-5-doc-html/html/qtlabscalendar/qtlabscalendar-index.html
+Files: /usr/share/doc/qtquickcontrols2-5-doc-html/html/qtlabscalendar/*.html

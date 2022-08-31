@@ -1,0 +1,151 @@
+Source: qtquickcontrols2-opensource-src
+Section: libs
+Priority: optional
+Maintainer: Deepin Developer <deepin-dev@deepin.org>
+Uploaders: Deepin Packages Builder <packages@deepin.org>
+Build-Depends: debhelper-compat (= 13),
+               dpkg-dev (>= 1.16.1),
+               pkg-kde-tools (>= 0.15.29~),
+               qml-module-qtgraphicaleffects (>= 5.15.3~),
+               qml-module-qtquick-layouts (>= 5.15.3~),
+               qml-module-qtquick-window2 (>= 5.15.3~),
+               qml-module-qttest (>= 5.15.3~),
+               qtbase5-dev (>= 5.15.3~),
+               qtbase5-private-dev (>= 5.15.3~),
+               qtdeclarative5-dev-tools (>= 5.15.3~),
+               qtdeclarative5-private-dev (>= 5.15.3~),
+               xauth <!nocheck>,
+               xvfb <!nocheck>
+Build-Depends-Indep: qdoc-qt5 (>= 5.15.3~) <!nodoc>,
+                     qhelpgenerator-qt5 (>= 5.15.3~) <!nodoc>,
+                     qtattributionsscanner-qt5 (>= 5.15.3~) <!nodoc>,
+                     qtbase5-doc-html (>= 5.15.3~) <!nodoc>,
+                     qtdeclarative5-doc-html (>= 5.15.3~) <!nodoc>,
+                     qtgraphicaleffects5-doc-html (>= 5.15.3~) <!nodoc>
+Standards-Version: 4.6.0
+Homepage: https://doc.qt.io/qt-5/qtquickcontrols-index.html
+
+Package: libqt5quickcontrols2-5
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Qt 5 Quick Controls 2 library
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt 5 Quick Controls 2 library.
+
+Package: libqt5quicktemplates2-5
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Qt 5 Quick Templates 2 library
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt 5 Quick Templates 2 library.
+
+Package: qml-module-qt-labs-calendar
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${qmlc:Depends}, ${shlibs:Depends}
+Description: Qt 5 qt.labs.calendar QML module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the QML qt.labs.calendar module, which is part of
+ Qt Quick Controls 2.
+
+Package: qml-module-qt-labs-platform
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Qt 5 qt.labs.platform QML module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the experimental Qt Labs Platform module that provides
+ platform integration: native dialogs, menus and menu bars, and tray icons.
+ It falls back to Qt Widgets when a native implementation is not available.
+
+Package: qml-module-qtquick-controls2
+Architecture: any
+Multi-Arch: same
+Depends: qml-module-qtquick-templates2, ${misc:Depends}, ${shlibs:Depends}
+Description: Qt 5 Qt Quick Controls 2 QML module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt Quick Controls 2 QML module.
+
+Package: qml-module-qtquick-templates2
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Qt 5 Qt Quick Templates 2 QML module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt Quick Templates 2 QML module.
+
+Package: qtquickcontrols2-5-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libqt5quickcontrols2-5 (= ${binary:Version}),
+         libqt5quicktemplates2-5 (= ${binary:Version}),
+         ${misc:Depends}
+Description: Qt 5 Quick Controls 2 development files
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt Quick Controls 2 development files.
+
+Package: qtquickcontrols2-5-private-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: qtquickcontrols2-5-dev (= ${binary:Version}), ${misc:Depends}
+Description: Qt 5 Quick Controls 2 private development files
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt Quick Controls 2 private development files.
+
+Package: qtquickcontrols2-5-doc
+Build-Profiles: <!nodoc>
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Breaks: qtquickcontrols5-doc (<< 5.12)
+Replaces: qtquickcontrols5-doc (<< 5.12)
+Multi-Arch: foreign
+Description: Qt 5 Quick Controls 2 documentation
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt Quick Controls 2 documentation in qch format.
+
+Package: qtquickcontrols2-5-doc-html
+Build-Profiles: <!nodoc>
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Breaks: qtquickcontrols5-doc-html (<< 5.12)
+Replaces: qtquickcontrols5-doc-html (<< 5.12)
+Multi-Arch: foreign
+Description: Qt 5 Quick Controls 2 HTML documentation
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the Qt Quick Controls 2 documentation in HTML format.
+
+Package: qtquickcontrols2-5-examples
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Qt 5 Qt Quick Templates 2 examples
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the examples for Qt Quick Controls 2.
