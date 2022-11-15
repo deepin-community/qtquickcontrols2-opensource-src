@@ -48,7 +48,7 @@ Copyright: 2015-2020 The Qt Company Ltd.
 License: GFDL-NIV-1.3
 
 Files: debian/*
-Copyright: 2015-2020 Dmitry Shachnev <mitya57@debian.org>
+Copyright: 2015-2022 Dmitry Shachnev <mitya57@debian.org>
 License: LGPL-3 or GPL-2
 
 License: LGPL-3

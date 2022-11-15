@@ -157,6 +157,7 @@ TestCase {
         verify(control.delegate)
         verify(control.indicator)
         verify(control.popup)
+        verify(control.acceptableInput)
         compare(control.inputMethodHints, Qt.ImhNoPredictiveText)
     }
 
@@ -1547,7 +1548,7 @@ TestCase {
         control.editText = ""
         compare(control.acceptableInput, true)
         control.editText = ""
-        control.forceActiveFocus()
+        control.contentItem.forceActiveFocus()
         keyPress(Qt.Key_A)
         compare(control.editText, "")
         keyPress(Qt.Key_A)
@@ -1584,7 +1585,7 @@ TestCase {
 
         compare(control.currentIndex, 0)
         compare(control.currentText, "first")
-        control.forceActiveFocus()
+        control.contentItem.forceActiveFocus()
         compare(control.activeFocus, true)
 
         control.selectAll()
@@ -1607,7 +1608,7 @@ TestCase {
         var control = createTemporaryObject(comboBox, testCase, {editable: true, model: ["Banana", "Coco", "Coconut", "Apple", "Cocomuffin"]})
         verify(control)
 
-        control.forceActiveFocus()
+        control.contentItem.forceActiveFocus()
         verify(control.activeFocus)
 
         var acceptCount = 0
@@ -1758,7 +1759,7 @@ TestCase {
         var control = createTemporaryObject(keysAttachedBox, testCase)
         verify(control)
 
-        control.forceActiveFocus()
+        control.contentItem.forceActiveFocus()
         verify(control.activeFocus)
 
         verify(!control.gotit)
@@ -2013,7 +2014,7 @@ TestCase {
 
         // Give the first ComboBox focus and type in 0 to select "Item 10" (default is "Item 1").
         waitForRendering(comboBox1)
-        comboBox1.forceActiveFocus()
+        comboBox1.contentItem.forceActiveFocus()
         verify(comboBox1.activeFocus)
         keyClick(Qt.Key_0)
         compare(comboBox1.editText, "Item 10")
@@ -2031,7 +2032,7 @@ TestCase {
 
         // Give focus back to the first ComboBox, and try the same thing except
         // with non-existing text; the currentIndex should not change.
-        comboBox1.forceActiveFocus()
+        comboBox1.contentItem.forceActiveFocus()
         verify(comboBox1.activeFocus)
         keySequence(StandardKey.SelectAll)
         compare(comboBox1.contentItem.selectedText, "Item 10")
@@ -2042,5 +2043,63 @@ TestCase {
         compare(comboBox1.editText, "nope")
         compare(comboBox1.currentIndex, 9)
         compare(currentIndexSpy.count, 1)
+    }
+
+    // QTBUG-61021: text line should not be focused by default
+    // It causes (e.g. on Android) showing virtual keyboard when it is not needed
+    function test_doNotFocusTextLineByDefault() {
+        var control = createTemporaryObject(comboBox, testCase)
+        // Focus not set after creating combobox
+        verify(!control.activeFocus)
+        verify(!control.contentItem.focus)
+
+        // After setting focus on combobox, text line should not be focused
+        control.forceActiveFocus()
+        verify(control.activeFocus)
+        verify(!control.contentItem.focus)
+
+        // Text line is focused after intentional setting focus on it
+        control.contentItem.forceActiveFocus()
+        verify(control.activeFocus)
+        verify(control.contentItem.focus)
+    }
+
+    Component {
+        id: intValidatorComponent
+        IntValidator {
+            bottom: 0
+            top: 255
+        }
+    }
+
+    function test_acceptableInput_QTBUG_94307() {
+        let items = [
+            { text: "A" },
+            { text: "2" },
+            { text: "3" }
+        ]
+        let control = createTemporaryObject(comboBox, testCase, {model: items, editable: true})
+        verify(control)
+
+        verify(control.acceptableInput)
+        compare(control.displayText, "A")
+
+        let acceptableInputSpy = signalSpy.createObject(control, {target: control, signalName: "acceptableInputChanged"})
+        verify(acceptableInputSpy.valid)
+
+        let intValidator = intValidatorComponent.createObject(testCase)
+        verify(intValidator)
+
+        control.validator = intValidator
+
+        compare(acceptableInputSpy.count, 1)
+        compare(control.displayText, "A")
+        compare(control.acceptableInput, false)
+
+        control.currentIndex = 1
+
+        compare(acceptableInputSpy.count, 2)
+        compare(control.displayText, "2")
+        compare(control.acceptableInput, true)
     }
 }
