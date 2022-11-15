@@ -1,3 +1,9 @@
+qtquickcontrols2-opensource-src (5.15.7-1+dde) unstable; urgency=medium
+
+  * New upstream release (5.15.7).
+
+ -- Duan Ting <duanting@uniontech.com>  Tue, 15 Nov 2022 13:34:44 +0800
+
 qtquickcontrols2-opensource-src (5.15.3.1-1+dde) stable; urgency=medium
 
   * ['Rebuild  against by  current gcc 11.2']
