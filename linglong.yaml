@@ -1,0 +1,33 @@
+package:
+  id: qtquickcontrols2
+  name: qtquickcontrols2
+  kind: lib
+  version: 5.15.7-1+dde
+  description: |
+    qtquickcontrols2.
+
+base:
+  id: org.deepin.base
+  version: 23.0.0
+
+depends:
+  - id: qtbase
+    version: 5.15.7-1+dde
+  - id: qtdeclarative
+    version: 5.15.7-1+dde
+
+source:
+  kind: local
+  patch:
+    - debian/patches/0001-Unset-mouseGrabberPopup-if-it-s-removed-from-childre.patch
+    - debian/patches/0002-Ensure-we-don-t-crash-when-changing-sizes-after-clea.patch
+    - debian/patches/0003-QQuickAction-don-t-grab-the-same-shortcut-multiple-t.patch
+    - debian/patches/0004-QQuickAbstractButton-fix-crash-on-destruction.patch
+    - debian/patches/0006-Fix-scroll-bars-not-showing-up-when-binding-to-stand.patch
+    - debian/patches/disable_fontless_examples_build.patch
+    - debian/patches/QTBUG-101480-Fix-controls-not-inheriting-palette-from-parent.patch
+    - debian/patches/QTBUG-76860-QQuickPlatformFolderDialog-Allow-opening-selected-folder.patch
+
+build:
+  kind: qmake
+
