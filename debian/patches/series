@@ -7,3 +7,4 @@ disable_fontless_examples_build.patch
 QTBUG-101480-Fix-controls-not-inheriting-palette-from-parent.patch
 QTBUG-76860-QQuickPlatformFolderDialog-Allow-opening-selected-folder.patch
 Fix-QQuickControl-Palette-currentColorGroup-is-error.patch
+Fix-the-abnormal-state-of-button-hover-on-the-touch-screen.patch
