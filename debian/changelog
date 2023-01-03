@@ -2,6 +2,8 @@ qtquickcontrols2-opensource-src (5.15.7.1-1+dde) UNRELEASED; urgency=medium
 
   * QQuickControl: Palette's currentColorGroup is error
     --Fix-QQuickControl-Palette-currentColorGroup-is-error.patch
+  * Fix the abnormal state of button hover on the touch screen
+    --Fix-the-abnormal-state-of-button-hover-on-the-touch-screen.patch
 
  -- Duan Ting <duanting@uniontech.com>  Mon, 12 Dec 2022 16:09:13 +0800
 
