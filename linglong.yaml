@@ -27,6 +27,8 @@ source:
     - debian/patches/disable_fontless_examples_build.patch
     - debian/patches/QTBUG-101480-Fix-controls-not-inheriting-palette-from-parent.patch
     - debian/patches/QTBUG-76860-QQuickPlatformFolderDialog-Allow-opening-selected-folder.patch
+    - debian/patches/Fix-QQuickControl-Palette-currentColorGroup-is-error.patch
+    - debian/patches/Fix-the-abnormal-state-of-button-hover-on-the-touch-screen.patch
 
 build:
   kind: qmake
